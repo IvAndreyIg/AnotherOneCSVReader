@@ -47,15 +47,25 @@ Table::Table(std::ifstream &file_stream)
     // check table format:: first element in first row should be comma
     getline(sstr, substr2, ',');
 
-    if (substr2 == "")
-    {
-        //   cout << "GOOD";
+    if (substr2 != "") {
+        throw "invalid table format, first element should be comma";
     }
     // fill vector by columns names
     while (sstr.good())
     {
         std::string substr;
         getline(sstr, substr, ',');
+        try
+        {
+            //if str without digits, stoi should throw expection,
+            // else name is incorrect
+            stoi(substr);
+            throw "invalid table format, incorrect col name";
+        }
+        catch (std::invalid_argument const &ex){
+            //no digits in col name
+        }
+        
         columns.push_back(substr);
     }
 
@@ -74,9 +84,21 @@ Table::Table(std::ifstream &file_stream)
 
         std::string substr3;
 
+
         getline(sstr, substr3, ',');
         // get row number from first element of row
-        row_num = stoi(substr3);
+
+        
+
+        try
+        {
+            row_num = stoi(substr3);
+        }
+        catch (std::invalid_argument const &ex)
+        {
+
+            throw "invalid table format, incorrent row name";
+        }
 
         rows.push_back(row_num);
 

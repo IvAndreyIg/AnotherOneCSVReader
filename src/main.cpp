@@ -42,6 +42,7 @@ void run(string path)
         }
         catch (char const *error)
         {
+            delete table;
             cout << "error:" << error << std::endl;
         }
     }
