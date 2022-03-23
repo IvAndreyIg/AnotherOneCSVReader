@@ -48,7 +48,9 @@ void TableParser::checkCell(int row, string col, rows_map &map_ref)
 
     static int recursion_counter = 0;
 
-    if (checkMatch(map_ref[row][col]))
+    string cell_value = map_ref[row][col];
+
+    if (checkMatch(cell_value))
     {
         // check recursion in table cells expressions
         if (recursion_counter > 15)
@@ -58,7 +60,7 @@ void TableParser::checkCell(int row, string col, rows_map &map_ref)
 
         recursion_counter++;
 
-        auto mathes = getMathes(map_ref[row][col]);
+        auto mathes = getMathes(cell_value);
 
         try
         {
@@ -82,6 +84,19 @@ void TableParser::checkCell(int row, string col, rows_map &map_ref)
         }
 
         recursion_counter--;
+    }
+    else
+    {
+        try
+        {
+            if ((std::to_string(stoi(cell_value))) != cell_value)
+                throw "invalid expression in cell,not enough arguments";
+        }
+        catch (std::invalid_argument const &ex)
+        {
+
+            throw "invalid expression in cell,unreachable arguments or not enough arguments";
+        }
     }
 }
 
