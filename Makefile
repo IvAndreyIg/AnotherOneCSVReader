@@ -1,6 +1,6 @@
 CC=g++
-CFLAGS=-std=c++20 -c -Wall 
-CXXFLAGS=-std=c++20 -Wall 
+CFLAGS=-std=c++17 -c -Wall 
+CXXFLAGS=-std=c++17 -Wall 
 
 all:csvreader
 

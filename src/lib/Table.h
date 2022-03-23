@@ -3,10 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <string>
 #include <sstream>
-#include <vector>
-#include <unordered_map>
+#include "TableParser.h"
 
 using std::string;
 using std::ifstream;
@@ -16,10 +14,6 @@ using std::stringstream;
 using std::vector;
 
 
-
-typedef std::unordered_map<string, string> col_map;
-
-typedef std::unordered_map< int, col_map> rows_map;
 
 
 class Table

@@ -22,6 +22,7 @@ void run(string path)
 
     std::string line;
 
+    // open file
     std::ifstream in(path);
 
     rows_map someStorage;
@@ -34,19 +35,19 @@ void run(string path)
     if (in.is_open())
     {
 
-        try 
+        try
         {
             table = new Table(in);
             table->printTable();
         }
-        catch (char const* error) 
+        catch (char const *error)
         {
-            cout << "error:" << error;
+            cout << "error:" << error << std::endl;
         }
     }
     else
     {
-        cout << "error:cant open file";
+        cout << "error:cant open file" << std::endl;
     }
     in.close();
 

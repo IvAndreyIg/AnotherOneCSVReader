@@ -1,5 +1,5 @@
 #include "Table.h"
-#include "TableParser.h"
+
 
 Table::~Table()
 {
@@ -131,19 +131,4 @@ void Table::printTable()
         }
         cout << std::endl;
     }
-}
-
-void puck()
-{
-
-    // std::vector<std::string> columns;
-
-    rows_map storage;
-
-    for (auto &[key, value] : storage)
-    {
-        value.clear();
-    }
-
-    storage.clear();
 }
