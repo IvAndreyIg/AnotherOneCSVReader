@@ -37,17 +37,15 @@ void Table::Inialize()
 Table::Table(std::ifstream &file_stream)
 {
     std::string line;
-    std::string substr2;
-
     stringstream sstr;
 
     getline(file_stream, line);
     sstr << line;
 
     // check table format:: first element in first row should be comma
-    getline(sstr, substr2, ',');
+    getline(sstr, line, ',');
 
-    if (substr2 != "") {
+    if (line != "") {
         throw "invalid table format, first element should be comma";
     }
     // fill vector by columns names

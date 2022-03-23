@@ -1,11 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "lib/Table.h"
-
-using std::cout;
-using std::ifstream;
-using std::string;
 
 void run(string);
 
